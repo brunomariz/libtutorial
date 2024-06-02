@@ -2,7 +2,7 @@
 
 ## Code
 
-In this tutorial, we'll build the source code gradually. The final version of the code is in `examples/main.c`.
+In this tutorial, we'll build the source code gradually. The final version of the code is in `examples/main.c` and `src/`.
 
 To start, the code will be very simple, and use a function from a library that is not yet implemented:
 
