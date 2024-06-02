@@ -26,7 +26,7 @@ When `gcc` is called, such as using `gcc -o a.out main.c`, it first compiles the
 gcc -c examples/main.c
 ```
 
-The `-c` flag tells gcc to compile and assemble, but not link. This command will generate a `main.o` file. To take a look at it's contents, use
+The `-c` flag tells gcc to compile and assemble, but not link. This command will generate a `main.o` file. To take a look at it's symbols, use
 
 ```
 nm main.o
