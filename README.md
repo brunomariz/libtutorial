@@ -57,7 +57,7 @@ void tutorial_print(const char* message) {
 Aditionally, to remove the warning from the compilation of our `main.c` example, we can create a header file to include the definition of our library function in our main function:
 
 ```c
-// inc/libctutorial.h
+// inc/libtutorial.h
 #include <stdio.h>
 
 void tutorial_print(const char* message);
@@ -67,7 +67,7 @@ Now we update our source files to include this header:
 
 ```c
 // src/libtutorial.c
-#include "libctutorial.h"
+#include "libtutorial.h"
 
 void tutorial_print(const char* message) {
     printf("=== TUTORIAL PRINT: ===\n");
@@ -79,7 +79,7 @@ void tutorial_print(const char* message) {
 
 ```c
 // examples/main.c
-#include "libctutorial.h"
+#include "libtutorial.h"
 
 int main(int* argc, char** argv) {
     tutorial_print("Hello, world!");
@@ -97,7 +97,7 @@ gcc -c examples/main.c -I inc/
 To compile the library, use the following command:
 
 ```
-gcc -o libtutorial.so -fpic -shared src/libtutorial.c
+gcc -o libtutorial.so -fpic -shared src/libtutorial.c -I inc/
 ```
 
 The `-fpic` flag tells the compiler to position-independent code (PIC) suitable for use in a shared library. The `-shared` flag tells the compiler to create a shared object.
@@ -143,4 +143,13 @@ $ ./main
 === TUTORIAL PRINT: ===
 Message: Hello, world!
 =======================
+```
+
+## CMake
+
+Lets upgrade our project by creating CMake files to aid in builds. First, create the top-level `CMakeLists.txt` file:
+
+```
+# CMakeLists.txt
+
 ```
