@@ -104,7 +104,7 @@ The `-fpic` flag tells the compiler to position-independent code (PIC) suitable 
 
 > Note: the file name following the `-o` flag must be named `lib<library-name>.so`.
 
-Again, it is possible to see this library defines the `tutorial_print` function with the `nm` command:
+Again, it is possible to see that this library defines the `tutorial_print` function with the `nm` command:
 
 ```
 nm libtutorial.so
