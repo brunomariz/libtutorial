@@ -188,7 +188,7 @@ make
 make install
 ```
 
-After running these commands, it should be possible to compile the example code without compiling and linking the tutorial library ourselves! However, we still need to pass the library name in order to compile:
+After running these commands, it should be possible to compile the example code without compiling and linking the tutorial library ourselves, since the shared object library will be availiable at `/usr/local/lib/`! However, we still need to pass the library name in order to compile:
 
 ```
 gcc -o main examples/main.c -ltutorial
@@ -202,3 +202,5 @@ $ LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH ./main
 Message: Hello, world!
 =======================
 ```
+
+To avoid needing to specify the `LD_LIBRARY_PATH` variable every time, it is possible to include `export LD_LIBRARY_PATH=/usr/local/lib` to the `~/.bashrc` file, or set it with [environment modules](https://github.com/brunomariz/it-support/tree/main/environment-modules).
