@@ -149,7 +149,7 @@ Message: Hello, world!
 
 Lets upgrade our project by creating CMake files to aid in builds. First, create the top-level `CMakeLists.txt` file:
 
-```
+```bash
 # CMakeLists.txt
 
 # Define minimum cmake version
