@@ -2,7 +2,7 @@
 
 ## Code
 
-In this tutorial, we'll build the source code gradually. The final version of the code is in `examples/main.c` and `src/`.
+In this tutorial, we'll build the source code gradually. The final version of the code is in `examples/main.c`, `src/` and `inc/`.
 
 To start, the code will be very simple, and use a function from a library that is not yet implemented:
 
@@ -57,7 +57,7 @@ void tutorial_print(const char* message) {
 Aditionally, to remove the warning from the compilation of our `main.c` example, we can create a header file to include the definition of our library function in our main function:
 
 ```c
-// src/libctutorial.h
+// inc/libctutorial.h
 #include <stdio.h>
 
 void tutorial_print(const char* message);
@@ -91,7 +91,7 @@ int main(int* argc, char** argv) {
 Now if we recompile our main program, we'll get no warning. However, we need to specify the path to the header file:
 
 ```
-gcc -c examples/main.c -I src/
+gcc -c examples/main.c -I inc/
 ```
 
 To compile the library, use the following command:
