@@ -152,4 +152,53 @@ Lets upgrade our project by creating CMake files to aid in builds. First, create
 ```
 # CMakeLists.txt
 
+# Define minimum cmake version
+cmake_minimum_required(VERSION 3.22)
+# Define a project
+project(CmakeExample VERSION 1.0 DESCRIPTION "tutorial library")
+# Declare a library
+add_library(tutorial SHARED src/libtutorial.c)
+# Set the version property (optional)
+set_target_properties(tutorial PROPERTIES VERSION ${PROJECT_VERSION})
+# Declare the public API (files in inc/). Private header files should be placed in src/ along with the C files.
+set_target_properties(tutorial PROPERTIES PUBLIC_HEADER include/libtutorial.h)
+# Include the top level directory
+target_include_directories(tutorial PRIVATE inc)
+target_include_directories(tutorial PRIVATE src)
+# Create an install rule and declare files to install
+include(GNUInstallDirs)
+install(TARGETS tutorial
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+```
+
+Then run the usual commands to generate the build files
+
+```
+mkdir build
+cd build
+cmake ..
+```
+
+It is then possible to install the library using
+
+```
+make
+make install
+```
+
+After running these commands, it should be possible to compile the example code without compiling and linking the tutorial library ourselves! However, we still need to pass the library name in order to compile:
+
+```
+gcc -o main examples/main.c -ltutorial
+```
+
+And we still need to make sure the `LD_LIBRARY_PATH` is set to point to the directory the library was installed in:
+
+```
+$ LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH ./main
+=== TUTORIAL PRINT: ===
+Message: Hello, world!
+=======================
 ```
